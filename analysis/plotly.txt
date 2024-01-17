@@ -1,0 +1,19 @@
+import  squarify #squarify (algorithm for treemap)
+squarify.plot(sizes=stats_data[stats_data['variable']=="P"]["effect"], label=stats_data['independent_variable'], alpha=.8 )
+plt.axis('off')
+plt.show()
+
+
+#plot the data
+
+import plotly.express as px
+#plot data 
+
+fig=px.treemap(stats_data, path=['independent_variable'], values="effect", color="direction")
+fig.show()
+
+
+colors={"positive":"#00AFBB", "negative":"#E7B800"}
+fig = px.bar(stats_data[stats_data['variable']=="Na"], y="independent_variable", x="effect",color="direction",color_discrete_map={"positive":"#00AFBB", "negative":"#E7B800"},
+                 error_x="lower_B", error_y="upper_B",template="plotly_white")
+fig.show()
